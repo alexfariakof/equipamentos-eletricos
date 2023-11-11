@@ -1,11 +1,9 @@
-import React from 'react';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App" data-testid="app">
-      <header className="App-header" data-testid="app-header">
-      </header>
+    <div className="app" data-testid="app">
+      <div className="app-body" data-testid="app-body">Equipamentos Elétricos</div>
     </div>
   );
 }
