@@ -8,8 +8,7 @@ test('renders learn react link', () => {
   render(<App />);  
   const appElement = screen.getByTestId('app');
   const headerElement = screen.getByTestId('app-body');
-  
-  
+    
   // Assert
   expect(appElement).toBeInTheDocument();  
   expect(headerElement).toBeInTheDocument();
