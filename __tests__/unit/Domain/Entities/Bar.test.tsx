@@ -2,7 +2,7 @@ import Bar from "../../../../src/Domain/Entities/Bar";
 
 describe("Unit Test Bar Entity", () => {
 
-  test("should create a Bar instance", () => {
+  test("Should Create a Bar Instance", () => {
     // Arrange & Act
     const bar = new Bar(1);
 

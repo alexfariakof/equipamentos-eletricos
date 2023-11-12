@@ -3,7 +3,7 @@ import ShuntLine from "../../../../src/Domain/Entities/ShuntLine";
 
 describe("Unit Test ShuntLine", () => {
 
-  test("should create a ShuntLine instance", () => {
+  test("Should Create a ShuntLine Instance", () => {
     // Arrange & Anct
     const bar1 = new Bar(1);
     const bar2 = new Bar(2);

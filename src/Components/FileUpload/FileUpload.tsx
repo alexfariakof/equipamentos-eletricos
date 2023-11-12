@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
+import FileUploadController from "../../Controller/FileUploadController";
 
-
-const FileUpload: React.FC = () => {
+const FileUpload: React.FC = () => {  
   const [file, setFile] = useState<File | null>(null);
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -12,6 +12,7 @@ const FileUpload: React.FC = () => {
   };
 
   const handleUpload = async () => {
+    let controller = new FileUploadController();
     if (!file) {
       alert("Por favor, selecione um arquivo CSV.");
       return;
@@ -20,13 +21,17 @@ const FileUpload: React.FC = () => {
     const formData = new FormData();
     formData.append("file", file);
     try {
-      // Enviar o arquivo para o servidor (Node.js)
-      //await axios.post("http://localhost:3001/upload", formData);
-      // Limpar o estado do arquivo após o upload bem-sucedido
-      setFile(null);
-      alert("Upload bem-sucedido!");
-    } catch (error) {      
-      alert("Erro ao fazer upload.");
+
+      const result = controller.postFileToValidate(file);
+      
+      if ((await result).status === true) {
+        alert("Upload bem-sucedido!");
+      } 
+      else {
+        alert((await result).message);
+      }
+    } catch (error: any) {      
+      alert("Erro ao fazer upload: " + error.message);
     }
   };
 
