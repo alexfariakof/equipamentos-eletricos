@@ -4,7 +4,7 @@ import ShuntBar from "../Domain/Entities/ShuntBar";
 import ShuntLine from "../Domain/Entities/ShuntLine";
 
 class FileParserService {
-  static parseFile(fileContent: string): any[] {
+  static parseFile(fileContent: String): any[] {
     const lines = fileContent.split("\n");
     const parsedData: any[] = [];
 

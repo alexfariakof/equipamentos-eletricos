@@ -1,35 +1,29 @@
 import TopologyValidationBussiness from '../Bussiness/TopologyValidationBussiness';
+import { ITopologyValidation } from '../Domain';
 import FileParserService from '../Services/FileParserService';
 
 class FileUploadController  {
 
-   postFileToValidate = async (file: File) : Promise<{ message: string | boolean; }> => {  
+   postFileToValidate = async (file: File) : Promise<ITopologyValidation> => {  
     try {
       
       const fileContent = await this.readFileAsync(file);
       const parsedData = FileParserService.parseFile(fileContent);
       // Validar topologia
-      const validationResult = TopologyValidationBussiness.validateTopology(parsedData);
-      if (validationResult.status === true){
-        return { message: validationResult.status };
-      }
-      else{
-        return { message: validationResult.message };
-      }
-        
+      return TopologyValidationBussiness.validateTopology(parsedData);
 
     } catch (error: any) {
 
-      return { message: error.message };
+      return { status: false, message: error.message };
     }
   }
 
-  private readFileAsync(file: File): Promise<string> {
+  private readFileAsync(file: File): Promise<String> {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = (event) => {
         if (event.target) {
-          resolve(event.target.result as string);
+          resolve(event.target.result as String);
         } else {
           reject(new Error('Erro ao ler o conteúdo do arquivo.'));
         }

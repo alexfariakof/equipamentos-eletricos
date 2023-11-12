@@ -1,15 +1,15 @@
+import { ITopologyValidation } from "../Domain";
 import Bar from "../Domain/Entities/Bar";
 import Line from "../Domain/Entities/Line";
 import ShuntBar from "../Domain/Entities/ShuntBar";
 import ShuntLine from "../Domain/Entities/ShuntLine";
-
 class TopologyValidationBussiness {
-  static validateTopology(data: any[]): { status: boolean, message: string } {
+  static validateTopology(data: any[]): ITopologyValidation {
     const bars: Bar[] = [];
     const lines: Line[] = [];
     const shuntBars: ShuntBar[] = [];
     const shuntLines: ShuntLine[] = [];
-    let error = {};
+    let topologyValidation :ITopologyValidation;
     
     data.forEach((item) => {
 
@@ -18,8 +18,8 @@ class TopologyValidationBussiness {
       const uniqueBarNumbers = [...new Set(barNumbers)];
 
       if (barNumbers.length !== uniqueBarNumbers.length) {
-        error = { status: false, message: 'Erro: Números de barras duplicados encontrados.' };
-        throw(error);          
+        topologyValidation = { status: false, message: 'Erro: Números de barras duplicados encontrados.' };
+        throw(topologyValidation);          
       }
 
       if (item.bar) {
@@ -29,8 +29,8 @@ class TopologyValidationBussiness {
         const barraPara = bars.find((obj:any) => obj.bar.getId() === item.line.getBarraPara().getId());
     
         if (!barraDe || !barraPara) {
-          error = { status: false, message: 'Erro: Barras não encontradas para criar a Linha.' };
-          throw(error);          
+          topologyValidation = { status: false, message: 'Erro: Barras não encontradas para criar a Linha.' };
+          throw(topologyValidation);          
         }
     
         lines.push(new Line(barraDe, barraPara, item.line.getId()));
@@ -39,8 +39,8 @@ class TopologyValidationBussiness {
         const barraSB = bars.find((obj:any) => obj.bar.getId() === item.shuntBar.getBarra().getId());
     
         if (!barraSB) {
-          error = { status: false, message: 'Erro: Barra não encontrada para criar o Shunt de Barra.' };
-          throw(error);
+          topologyValidation = { status: false, message: 'Erro: Barra não encontrada para criar o Shunt de Barra.' };
+          throw(topologyValidation);
         }
     
         shuntBars.push(new ShuntBar(barraSB, item.shuntBar.getId()));
@@ -50,23 +50,19 @@ class TopologyValidationBussiness {
         const barraParaSL = bars.find((obj:any) => obj.bar.getId() === item.shuntLine.getBarraPara().getId());
     
         if (!barraDeSL || !barraParaSL) {
-          error = { status: false, message: 'Erro: Barras não encontradas para criar o Shunt de Linha.' };
-          throw(error);
+          topologyValidation = { status: false, message: 'Erro: Barras não encontradas para criar o Shunt de Linha.' };
+          throw(topologyValidation);
         }
     
         shuntLines.push(new ShuntLine(barraDeSL, barraParaSL, item.shuntLine.getIdLinha(), item.shuntLine.getId()));
 
       } else {
-        error = { status: false, message: 'Erro: Tipo de equipamento desconhecido.' };   
-        throw(error);
+        topologyValidation = { status: false, message: 'Erro: Tipo de equipamento desconhecido.' };   
+        throw(topologyValidation);
       }
 
     });
-    
 
-
-
-    // Retorna true caso não haja erros
     return { status: true, message: 'Nenhum erro encontrado na topologia.' };
   }
 }

@@ -22,9 +22,9 @@ const FileUpload: React.FC = () => {
     formData.append("file", file);
     try {
 
-      const result = controller.postFileToValidate(file) as any;
+      const result = controller.postFileToValidate(file);
       
-      if ((await result).message === true) {
+      if ((await result).status === true) {
         alert("Upload bem-sucedido!");
       } 
       else {

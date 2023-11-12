@@ -21,7 +21,7 @@ describe("Unit Test FileUpload Component", () => {
     // Arrange & Act
     render(<FileUpload />);
     const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => { });
-    FileUploadController.prototype.postFileToValidate = jest.fn().mockResolvedValue({ message: true });
+    FileUploadController.prototype.postFileToValidate = jest.fn().mockResolvedValue({ status: true });
 
     // Simula a seleção de um arquivo
     const fileInput = screen.getByTestId('fileUpload');
@@ -46,7 +46,7 @@ describe("Unit Test FileUpload Component", () => {
     // Arrange & Act
     render(<FileUpload />);
     const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => { });
-    FileUploadController.prototype.postFileToValidate = jest.fn().mockResolvedValue({ message: false });
+    FileUploadController.prototype.postFileToValidate = jest.fn().mockResolvedValue({ status: false });
 
     // Simula a seleção de um arquivo
     const fileInput = screen.getByTestId('fileUpload');
@@ -71,7 +71,7 @@ describe("Unit Test FileUpload Component", () => {
     // Arrange & Act
     render(<FileUpload />);
     const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => { });
-    FileUploadController.prototype.postFileToValidate = jest.fn().mockRejectedValue({ message: false });
+    FileUploadController.prototype.postFileToValidate = jest.fn().mockRejectedValue({ status: false });
 
     // Simula a seleção de um arquivo
     const fileInput = screen.getByTestId('fileUpload');
