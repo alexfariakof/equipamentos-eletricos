@@ -3,15 +3,15 @@ import FileParserService from '../Services/file-parser.service';
 
 class FileImportController  {
 
-   postFileToValidate = async (file: File) : Promise<{ message: string; }> => {  
+   postFileToValidate = async (file: File) : Promise<{ message: string | boolean; }> => {  
     try {
       
       const fileContent = await this.readFileAsync(file);
       const parsedData = FileParserService.parseFile(fileContent);
       // Validar topologia
       const validationResult = TopologyValidationBussiness.validateTopology(parsedData);
-      if (validationResult.status){
-        return { message: validationResult.message };
+      if (validationResult.status === true){
+        return { message: validationResult.status };
       }
       else{
         return { message: validationResult.message };
