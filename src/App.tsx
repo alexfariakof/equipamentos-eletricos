@@ -1,5 +1,5 @@
 import './App.css';
-import FileUpload from './Components/FileUpload/file-upload.component';
+import FileUpload from './Components/FileUpload/FileUpload';
 
 const App = () => {
   return (

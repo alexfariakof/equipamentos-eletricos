@@ -3,7 +3,7 @@ import Line from "../../../../src/Domain/Entities/Line";
 
 describe("Unit Test Line Entity", () => {
   
-  test("should create a Line instance", () => {
+  test("Should Create a Line Instance", () => {
     // Arrange & Act
     const bar1 = new Bar(1);
     const bar2 = new Bar(2);

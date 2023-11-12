@@ -1,7 +1,7 @@
-import TopologyValidationBussiness from '../Bussiness/topology-validation.bussiness';
-import FileParserService from '../Services/file-parser.service';
+import TopologyValidationBussiness from '../Bussiness/TopologyValidationBussiness';
+import FileParserService from '../Services/FileParserService';
 
-class FileImportController  {
+class FileUploadController  {
 
    postFileToValidate = async (file: File) : Promise<{ message: string | boolean; }> => {  
     try {
@@ -41,4 +41,4 @@ class FileImportController  {
     });  
   }
 }
-export default FileImportController;
+export default FileUploadController;

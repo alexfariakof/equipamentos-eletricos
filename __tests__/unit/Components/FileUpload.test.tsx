@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, fireEvent, screen, waitFor } from '@testing-library/react';
-import FileUpload from '../../../src/Components/FileUpload/file-upload.component';
-import FileImportController from '../../../src/Controller/file-import.controller';
+import FileUpload from '../../../src/Components/FileUpload/FileUpload';
+import FileUploadController from '../../../src/Controller/FileUploadController';
 
-jest.mock('../../../src/Controller/file-import.controller', () => {
+jest.mock('../../../src/Controller/FileUploadController', () => {
   return {
     __esModule: true,
     default: jest.fn(),
@@ -21,7 +21,7 @@ describe("Unit Test FileUpload Component", () => {
     // Arrange & Act
     render(<FileUpload />);
     const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => { });
-    FileImportController.prototype.postFileToValidate = jest.fn().mockResolvedValue({ message: true });
+    FileUploadController.prototype.postFileToValidate = jest.fn().mockResolvedValue({ message: true });
 
     // Simula a seleção de um arquivo
     const fileInput = screen.getByTestId('fileUpload');
@@ -34,7 +34,7 @@ describe("Unit Test FileUpload Component", () => {
 
     // Assert
     await waitFor(() => {
-      expect(FileImportController.prototype.postFileToValidate).toHaveBeenCalledWith(file);      
+      expect(FileUploadController.prototype.postFileToValidate).toHaveBeenCalledWith(file);      
     });
     expect(alertSpy).toHaveBeenCalled();
     expect(alertSpy).toHaveBeenCalledWith('Upload bem-sucedido!');
@@ -46,7 +46,7 @@ describe("Unit Test FileUpload Component", () => {
     // Arrange & Act
     render(<FileUpload />);
     const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => { });
-    FileImportController.prototype.postFileToValidate = jest.fn().mockResolvedValue({ message: false });
+    FileUploadController.prototype.postFileToValidate = jest.fn().mockResolvedValue({ message: false });
 
     // Simula a seleção de um arquivo
     const fileInput = screen.getByTestId('fileUpload');
@@ -59,7 +59,7 @@ describe("Unit Test FileUpload Component", () => {
 
     // Assert
     await waitFor(() => {
-      expect(FileImportController.prototype.postFileToValidate).toHaveBeenCalledWith(file);      
+      expect(FileUploadController.prototype.postFileToValidate).toHaveBeenCalledWith(file);      
     });
     expect(alertSpy).toHaveBeenCalled();
     expect(alertSpy).not.toContainEqual('Upload bem-sucedido!');
@@ -71,7 +71,7 @@ describe("Unit Test FileUpload Component", () => {
     // Arrange & Act
     render(<FileUpload />);
     const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => { });
-    FileImportController.prototype.postFileToValidate = jest.fn().mockRejectedValue({ message: false });
+    FileUploadController.prototype.postFileToValidate = jest.fn().mockRejectedValue({ message: false });
 
     // Simula a seleção de um arquivo
     const fileInput = screen.getByTestId('fileUpload');
@@ -84,7 +84,7 @@ describe("Unit Test FileUpload Component", () => {
 
     // Assert
     await waitFor(() => {
-      expect(FileImportController.prototype.postFileToValidate).toHaveBeenCalledWith(file);      
+      expect(FileUploadController.prototype.postFileToValidate).toHaveBeenCalledWith(file);      
     });
     expect(alertSpy).toHaveBeenCalled();
     expect(alertSpy).not.toContainEqual('Upload bem-sucedido!');

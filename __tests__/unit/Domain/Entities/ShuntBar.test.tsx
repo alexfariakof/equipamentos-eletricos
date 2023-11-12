@@ -3,7 +3,7 @@ import ShuntBar from "../../../../src/Domain/Entities/ShuntBar";
 
 describe("Unit Test ShuntBar", () => {
   
-    test("should create a ShuntBar instance", () => {
+    test("Should Create a ShuntBar Instance", () => {
     // Arrange & Act
     const bar = new Bar(1);
     const shuntBar = new ShuntBar(bar, 1);

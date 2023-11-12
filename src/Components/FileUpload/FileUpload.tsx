@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
-import FileImportController from "../../Controller/file-import.controller";
+import FileUploadController from "../../Controller/FileUploadController";
 
 const FileUpload: React.FC = () => {  
   const [file, setFile] = useState<File | null>(null);
@@ -12,7 +12,7 @@ const FileUpload: React.FC = () => {
   };
 
   const handleUpload = async () => {
-    let controller = new FileImportController();
+    let controller = new FileUploadController();
     if (!file) {
       alert("Por favor, selecione um arquivo CSV.");
       return;
