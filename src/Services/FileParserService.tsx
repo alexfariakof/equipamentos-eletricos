@@ -2,9 +2,11 @@ import Bar from "../Domain/Entities/Bar";
 import Line from "../Domain/Entities/Line";
 import ShuntBar from "../Domain/Entities/ShuntBar";
 import ShuntLine from "../Domain/Entities/ShuntLine";
+import { Equipment } from "../Prisma/client";
 
 class FileParserService {
-  static parseFile(fileContent: String): any[] {
+
+  static parseFileToArray(fileContent: String): any[] {
     const lines = fileContent.split("\n");
     const parsedData: any[] = [];
 
@@ -54,6 +56,34 @@ class FileParserService {
     });
 
     return parsedData;
+  }
+
+  static parseFileToEquipments(fileContent: String): Equipment[] {
+    const lines = fileContent.split("\n");
+    const parsedEquipments: Equipment[] = [];
+
+    lines.forEach((line) => {
+      const trimmedLine = line.trim();
+
+      if (trimmedLine) {
+        const [type, ...data] = trimmedLine.split(",").map((part) => part.trim());
+
+        if (type && data.length > 0) {
+          const parsedEquipment: Equipment = {
+            id: 0,
+            type,
+            idBarra: parseInt(data[0], 10),
+            barraDe: data.length > 1 ? parseInt(data[1], 10) : null,
+            barraPara: data.length > 2 ? parseInt(data[2], 10) : null,
+            idLinha: data.length > 3 ? parseInt(data[3], 10) : null,
+          };
+
+          parsedEquipments.push(parsedEquipment);
+        }
+      }
+    });
+
+    return parsedEquipments;
   }
 }
 

@@ -23,5 +23,5 @@
   "include": [
     "src", 
     "__tests__/**/src/**.test.tsx", "__tests__/**.test.tsx"  
-  ]
+, "Prisma"  ]
 }
