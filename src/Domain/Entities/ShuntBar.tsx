@@ -1,16 +1,16 @@
 import Bar from "./Bar";
 
 class ShuntBar {
-  private barra: Bar;
+  private bar: Bar;
   private id: number;
 
-  constructor(barra: Bar, id: number) {
-    this.barra = barra;
+  constructor(_bar: Bar, id: number) {
+    this.bar = _bar;
     this.id = id;
   }
 
   getBarra(): Bar {
-    return this.barra;
+    return this.bar;
   }
 
   getId(): number {
