@@ -13,7 +13,6 @@ class EquipamentosController  {
   postFile = async (fileContent: String) : Promise<ITopologyValidation> => {  
     try {
       
-      //const fileContent = await this.readFileAsync(file);
       const parsedData = EquipamentosParserService.parseFileToArray(fileContent);
       
       // Validar topologia
@@ -49,25 +48,7 @@ class EquipamentosController  {
     } catch (error) {
 
       throw error;
-    }
-
-  }
-
-  private readFileAsync(file: File): Promise<String> {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        if (event.target) {
-          resolve(event.target.result as String);
-        } else {
-          reject(new Error('Erro ao ler o conteúdo do arquivo.'));
-        }
-      };
-      reader.onerror = (event) => {
-        reject(new Error('Erro ao ler o conteúdo do arquivo.'));
-      };
-      reader.readAsText(file);
-    });  
+    } 
   }
 }
 export default EquipamentosController;
