@@ -1,3 +1,4 @@
+import EquipmentBussiness from '../Bussiness/EquipmentBussiness';
 import TopologyValidationBussiness from '../Bussiness/TopologyValidationBussiness';
 import { ITopologyValidation } from '../Domain';
 import FileParserService from '../Services/FileParserService';
@@ -8,9 +9,19 @@ class FileUploadController  {
     try {
       
       const fileContent = await this.readFileAsync(file);
-      const parsedData = FileParserService.parseFile(fileContent);
+      const parsedData = FileParserService.parseFileToArray(fileContent);
+      
       // Validar topologia
-      return TopologyValidationBussiness.validateTopology(parsedData);
+      const validateTopology = TopologyValidationBussiness.validateTopology(parsedData);
+
+      if (validateTopology.status === true){
+        const parseEquipments = FileParserService.parseFileToEquipments(fileContent);
+        parseEquipments.forEach((equipment => {
+          EquipmentBussiness.createEquipment(equipment);
+        }));        
+      }
+
+      return validateTopology;
 
     } catch (error: any) {
 
