@@ -6,11 +6,11 @@ Existem duas fromas de executar o projeto em abambas certifique-se de ter o [Doc
 
 * Manualmente
   
-  1. Abra um novo terminal e estando no diretório `__database__´ execute o comando ´docker-compose up --build -d´ esse comando realizara a compilação, execução e configuração do servidor mysql com as tabelas utilizadas no projeto.
+  1. Abra um novo terminal e estando no diretório `./__database__` execute o comando `docker-compose up --build -d` esse comando realizara a compilação, execução e configuração do servidor mysql com as tabelas utilizadas no projeto.
 
-  2. Abra um novo terminal e estando no diretório `__server__´ execute o comando `npm install ` em seguinda o comando `npm start`. A aplicação servidor irá inicializar e ficar disponível no endereço `http://localhost:3001`. 
+  2. Abra um novo terminal e estando no diretório `./__server__` execute o comando `npm install` em seguinda o comando `npm start`. A aplicação servidor irá inicializar e ficar disponível no endereço `http://localhost:3001`. 
 
-  3. Abra um novo terminal e estando no diretório ´__client__` execute o comando `npm install` em segida o comando `npm start`. A aplicação cliente irá inicializar e ficar disponível no endereço `http://localhost:3000`
+  3. Abra um novo terminal e estando no diretório `./__client__` execute o comando `npm install` em segida o comando `npm start`. A aplicação cliente irá inicializar e ficar disponível no endereço `http://localhost:3000`.
 
 * Automaticamente
 
@@ -27,11 +27,11 @@ Existem duas fromas de executar o projeto em abambas certifique-se de ter o [Doc
   
 ## Testes de Integração
 
- Por questão de tempo não foi possivél finalizar esse teste mais o mesmo pode ser encontrado na pasta `__tests__/Components/Unit/FileUpload.test.tsx` que pode ser considerado um teste de integração.
+ Por questão de tempo não foi possivél finalizar esse teste mais o mesmo pode ser encontrado na pasta `./__tests__/Components/Unit/FileUpload.test.tsx` que pode ser considerado um teste de integração.
 
 ## Testes Unitários
 
- Alguns testes foram implmentadaos e se encontram no diretório raiz na pasta `__tests__`. Existem duas dormas de serem executados.
+ Alguns testes foram implmentadaos e se encontram no diretório raiz na pasta `./__tests__`. Existem duas dormas de serem executados.
  
    1. Estando no diretório raiz do projeto execute o comando `npm install` em seguida `npm test`. Os testes seram realizados e um relatório de cobertura de código será gerado na pasta `./coverage`. Para visualizar o resultado basta abrir a página gerada em `./coverage/lcov-report/index.html`.
 
