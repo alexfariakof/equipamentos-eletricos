@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  equipamentos-eletricos:
+    container_name: 'server'
+    image: equipamentos-eletricos-server
+    build:
+      context: .
+      dockerfile: ./Dockerfile-local
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3001:3001

@@ -1,0 +1,12 @@
+npm install --save-dev @prisma/cli prisma
+npm install ts-node ts-node-dev typescript --save-dev
+
+Power Shell
+$env:MYSQL_CONNECTION_STRING="mysql://root:!12345@127.0.0.1:3306/EquipamentosEletricosDB?sslmode=none"
+
+
+
+Linux 
+export MYSQL_CONNECTION_STRING="mysql://root:!12345@127.0.0.1:3306/EquipamentosEletricosDB?sslmode=none"
+
+npx prisma generate --schema schema.prisma
