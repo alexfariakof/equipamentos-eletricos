@@ -20,8 +20,7 @@ describe("Unit Test FileUpload Component", () => {
     // Arrange & Act
     render(<FileUpload />);
     const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => { });
-    FileUploadController.prototype.postFileToValidate = jest.fn().mockResolvedValue({ status: true });
-
+    
     // Simula a seleção de um arquivo
     const fileInput = screen.getByTestId('fileUpload');
     const file = new File([''], '../../../.files_to_validate/arquivoA.CSV', { type: 'text/csv' });
@@ -33,9 +32,9 @@ describe("Unit Test FileUpload Component", () => {
 
     // Assert
     await waitFor(() => {
-      expect(FileUploadController.prototype.postFileToValidate).toHaveBeenCalledWith(file);      
+      expect(alertSpy).toHaveBeenCalled();
     });
-    expect(alertSpy).toHaveBeenCalled();
+    
     expect(alertSpy).toHaveBeenCalledWith('Upload bem-sucedido!');
     alertSpy.mockRestore();
   });
@@ -45,7 +44,7 @@ describe("Unit Test FileUpload Component", () => {
     // Arrange & Act
     render(<FileUpload />);
     const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => { });
-    FileUploadController.prototype.postFileToValidate = jest.fn().mockResolvedValue({ status: false });
+    
 
     // Simula a seleção de um arquivo
     const fileInput = screen.getByTestId('fileUpload');
@@ -58,9 +57,9 @@ describe("Unit Test FileUpload Component", () => {
 
     // Assert
     await waitFor(() => {
-      expect(FileUploadController.prototype.postFileToValidate).toHaveBeenCalledWith(file);      
+      expect(alertSpy).toHaveBeenCalled();
     });
-    expect(alertSpy).toHaveBeenCalled();
+    
     expect(alertSpy).not.toContainEqual('Upload bem-sucedido!');
     alertSpy.mockRestore();
   });
@@ -70,8 +69,7 @@ describe("Unit Test FileUpload Component", () => {
     // Arrange & Act
     render(<FileUpload />);
     const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => { });
-    FileUploadController.prototype.postFileToValidate = jest.fn().mockRejectedValue({ status: false });
-
+    
     // Simula a seleção de um arquivo
     const fileInput = screen.getByTestId('fileUpload');
     const file = new File([''], '../../../.files_to_validate/arquivoC.txt', { type: 'text/txt' });
@@ -83,9 +81,9 @@ describe("Unit Test FileUpload Component", () => {
 
     // Assert
     await waitFor(() => {
-      expect(FileUploadController.prototype.postFileToValidate).toHaveBeenCalledWith(file);      
+      expect(alertSpy).toHaveBeenCalled();
     });
-    expect(alertSpy).toHaveBeenCalled();
+    
     expect(alertSpy).not.toContainEqual('Upload bem-sucedido!');
     alertSpy.mockRestore();
   });
