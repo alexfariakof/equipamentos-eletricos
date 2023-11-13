@@ -19,6 +19,6 @@ module.exports = {
       '!./__client__/src/**/index.ts'
     ],
     moduleNameMapper: {
-      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+      "\\__client__\\.(css|less|scss|sass)$": "identity-obj-proxy"
     }    
   };
