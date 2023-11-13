@@ -1,5 +1,5 @@
-import Bar from "../../../../src/Domain/Entities/Bar";
-import ShuntBar from "../../../../src/Domain/Entities/ShuntBar";
+import Bar from "../../../__server__/src/interfaces/IBar";
+import ShuntBar from "../../../__server__/src/interfaces/IShuntBar";
 
 describe("Unit Test ShuntBar", () => {
   

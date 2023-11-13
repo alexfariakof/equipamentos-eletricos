@@ -1,6 +1,5 @@
 **/.classpath
 **/.dockerignore
-**/.env
 **/.git
 **/.gitignore
 **/.project
@@ -15,10 +14,11 @@
 **/docker-compose*
 **/compose*
 **/Dockerfile*
-**/node_modules
 **/npm-debug.log
 **/obj
 **/secrets.dev.yaml
 **/values.dev.yaml
 LICENSE
 README.md
+**/src/prisma
+**/__database__

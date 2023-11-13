@@ -1,4 +1,4 @@
-import Bar from "../../../../src/Domain/Entities/Bar";
+import Bar from "../../../__server__/src/interfaces/IBar";
 
 describe("Unit Test Bar Entity", () => {
 

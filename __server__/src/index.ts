@@ -23,7 +23,7 @@ app.use(cors());
 
 app.get('/equipamentos', async (req, res) => {
   const equipamentos = await controller.getEquipamentos();
-  await res.json(equipamentos);
+  await res.json({equipamentos});
 });
 
 app.post('/upload', upload.single('file'), async (req, res) => {

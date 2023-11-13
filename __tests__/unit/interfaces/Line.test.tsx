@@ -1,5 +1,5 @@
-import Bar from "../../../../src/Domain/Entities/Bar";
-import Line from "../../../../src/Domain/Entities/Line";
+import Bar from "../../../__server__/src/interfaces/IBar";
+import Line from "../../../__server__/src/interfaces/ILine";
 
 describe("Unit Test Line Entity", () => {
   

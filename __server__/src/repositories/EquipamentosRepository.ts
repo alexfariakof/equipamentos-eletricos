@@ -3,6 +3,7 @@ import { PrismaClient, Equipamentos } from '../prisma/client';
 const prisma = new PrismaClient();
 
 export class EquipamentosRepository {
+  
   async createEquipamentos(EquipamentosData: { tipo: string; idBarra: number; barraDe?: number |null; barraPara?: number | null; idLinha?: number | null }): Promise<Equipamentos> {
     try {
 
@@ -23,7 +24,7 @@ export class EquipamentosRepository {
     const Equipamentoss = await prisma.equipamentos.findMany()
     .catch((error) => {
       return Promise.resolve(error);
-    }) ;;
+    });
     return Equipamentoss;
   }
 

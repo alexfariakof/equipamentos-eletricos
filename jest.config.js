@@ -7,12 +7,16 @@ module.exports = {
     bail: false, 
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'], 
     collectCoverageFrom: [
-      'src/**/*.ts',
-      'src/**/*.tsx',
+      './__client__/src/**/*.ts',
+      './__client__/src/**/*.tsx',
+      './__server__/src/**/*.ts',
+      './__server__/src/**/*.tsx',
+      './__server__/src/**/*.tsx',
+      '!./__server__/src/prisma/client/**',      
       '!src/**/*.test.ts', 
       '!src/**/*.test.tsx',
-      '!src/**/index.tsx', 
-      '!src/**/index.ts'
+      '!./__client__/src/**/index.tsx', 
+      '!./__client__/src/**/index.ts'
     ],
     moduleNameMapper: {
       "\\.(css|less|scss|sass)$": "identity-obj-proxy"

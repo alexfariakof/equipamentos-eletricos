@@ -1,11 +1,11 @@
 FROM node:lts-alpine as node
 ENV NODE_ENV=development
 WORKDIR /usr/src/app
-COPY ["./__server__/package.json", "./__server__/package-lock.json*", "./"]
-RUN npm install 
-COPY ./__server__/ .
+COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
+RUN npm install --silent && mv node_modules ../
+COPY . ./
 RUN npx prisma generate --schema schema.prisma
-COPY ./__server__/.env.docker ./.env
+COPY ./.env.docker ./.env
 EXPOSE 3001
 RUN chown -R node /usr/src/app
 USER node
