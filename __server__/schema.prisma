@@ -15,4 +15,6 @@ model Equipamentos {
   barraDe   Int?
   barraPara Int?
   idLinha   Int?
+  @@unique([tipo, idBarra, barraDe, barraPara, idLinha])
 }
+

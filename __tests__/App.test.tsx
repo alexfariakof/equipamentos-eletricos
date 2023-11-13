@@ -1,7 +1,8 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
+import App from '../__client__/src/App';
 
-import App from '../src/App';
 
 test('renders learn react link', () => {
   // Act Arrange

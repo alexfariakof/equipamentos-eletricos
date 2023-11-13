@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, fireEvent, screen, waitFor } from '@testing-library/react';
-import FileUpload from '../../../src/Components/FileUpload/FileUpload';
-import FileUploadController from '../../../src/Controller/FileUploadController';
+import FileUpload from '../../../__client__/src/Components/FileUpload/FileUpload';
 
 jest.mock('../../../src/Controller/FileUploadController', () => {
   return {
